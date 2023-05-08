@@ -1,3 +1,4 @@
+
 {
   "name": "sprint5",
   "version": "1.0.0",
@@ -12,6 +13,7 @@
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/jest": "^28.1.4",
+    "@types/node": "^18.16.3",
     "@types/supertest": "^2.0.12",
     "jest": "^28.1.2",
     "sqlite3": "^5.0.8",
@@ -27,6 +29,7 @@
     "express-async-errors": "^3.1.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.6"
+    "typeorm": "^0.3.6",
+    "zod": "^3.21.4"
   }
 }
