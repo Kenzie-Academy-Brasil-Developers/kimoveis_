@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { TUserRequest } from "../interfaces/user.interfaces";
-import createUsersService from "../services/users/createUser.serive";
+import createUsersService from "../services/users/createUser.services";
 
 const createUsersController = async (
   req: Request,
