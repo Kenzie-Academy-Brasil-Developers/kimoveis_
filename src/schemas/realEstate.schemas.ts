@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const realEstateschema = z.object({
   id: z.number(),
-  value: z.string() || z.number(),
+  value: z.number(),
   size: z.number(),
   address: z.object({
     street: z.string().max(45),

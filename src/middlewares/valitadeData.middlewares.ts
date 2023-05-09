@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ZodTypeAny } from "zod";
 
-const ensureDataIsValidMiddleware =
+const valitadeDataMiddleware =
   (schema: ZodTypeAny) => (req: Request, res: Response, next: NextFunction) => {
     const validatedData = schema.parse(req.body);
 
@@ -10,4 +10,4 @@ const ensureDataIsValidMiddleware =
     return next();
   };
 
-export default ensureDataIsValidMiddleware;
+export default valitadeDataMiddleware;
