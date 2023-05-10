@@ -31,7 +31,6 @@ const updateUsersService = async (
   await userRepository.save(newUserData);
 
   const returnUser: TUserResponse = userSchemaRes.parse(newUserData);
-  console.log(returnUser);
 
   return returnUser;
 };

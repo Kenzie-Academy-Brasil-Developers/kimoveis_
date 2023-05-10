@@ -21,13 +21,7 @@ const loginService = async (payload: TLogin): Promise<string> => {
     throw new AppError("Invalid credentials", 401);
   }
 
-  console.log(typeof user.password, user.password, "data");
-
-  console.log(typeof payload.password, payload.password, "payload");
-
   const passwordMatch = await compare(payload.password, user.password);
-
-  console.log(passwordMatch);
 
   if (!passwordMatch) {
     throw new AppError("Invalid credentials", 401);
@@ -43,8 +37,6 @@ const loginService = async (payload: TLogin): Promise<string> => {
       subject: String(user.id),
     }
   );
-
-  console.log(token);
 
   return token;
 };

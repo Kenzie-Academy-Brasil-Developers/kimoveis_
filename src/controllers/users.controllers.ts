@@ -28,8 +28,6 @@ const listUsersController = async (
 
   const users = await listUsersService(isAdmin);
 
-  console.log(users);
-
   return res.status(200).json(users);
 };
 

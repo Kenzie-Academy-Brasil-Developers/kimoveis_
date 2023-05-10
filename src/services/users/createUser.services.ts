@@ -10,8 +10,6 @@ const createUsersService = async (
 ): Promise<TUserResponse> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  // payload.password = await hash(payload.password, 10);
-
   const user: User = userRepository.create(payload);
   await userRepository.save(user);
 

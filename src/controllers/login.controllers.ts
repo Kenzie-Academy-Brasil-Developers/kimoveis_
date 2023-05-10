@@ -10,8 +10,6 @@ const loginController = async (
 
   const token = await loginService(payload);
 
-  // console.log(token);
-
   return res.json({ token });
 };
 
