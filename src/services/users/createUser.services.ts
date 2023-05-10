@@ -15,9 +15,9 @@ const createUsersService = async (
   const user: User = userRepository.create(userData);
   await userRepository.save(user);
 
-  const returnUSer: TUserResponse = userSchemaRes.parse(user);
+  const returnUser: TUserResponse = userSchemaRes.parse(user);
 
-  return returnUSer;
+  return returnUser;
 };
 
 export default createUsersService;
