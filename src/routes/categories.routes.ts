@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { createCategoriesController } from "../controllers/categories.controllers";
+import {
+  createCategoriesController,
+  listCategoriesController,
+} from "../controllers/categories.controllers";
 import validateName from "../middlewares/validateName.middlewares";
 import { validateToken } from "../middlewares/validateToken.middlewares";
 import validateData from "../middlewares/valitadeData.middlewares";
@@ -14,5 +17,6 @@ categoriesRoutes.post(
   validateName,
   createCategoriesController
 );
+categoriesRoutes.get("", listCategoriesController);
 
 export default categoriesRoutes;
