@@ -21,8 +21,9 @@ export const validateToken = async (
     String(process.env.SECRET_KEY),
     (error: any, decoded: any) => {
       if (error) throw new AppError(error.message, 401);
-      res.locals.adminToken = {
+      res.locals.dataToken = {
         admin: decoded?.admin,
+        id: decoded?.id,
       };
     }
   );

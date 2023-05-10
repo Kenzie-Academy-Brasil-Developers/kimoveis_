@@ -20,11 +20,12 @@ export const validateId = async (
       },
     });
 
-    console.log(user)
-
     if (!user) {
       throw new AppError("User not found", 404);
     }
+
+    return next();
   }
+
   return next();
 };

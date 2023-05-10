@@ -27,7 +27,7 @@ const userSchemaLogin = z.object({
   password: z.string(),
 });
 
-const userSchemaReqUpdate = userSchemaReq.partial();
+const userSchemaReqUpdate = userSchemaReq.omit({ admin: true }).partial();
 
 export {
   userSchema,
