@@ -8,23 +8,29 @@ import "dotenv/config";
 import { User } from "../../entities";
 import { TLogin } from "../../interfaces/user.interfaces";
 
-const loginService = async (loginData: TLogin): Promise<string> => {
+const loginService = async (payload: TLogin): Promise<string> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await userRepository.findOne({
     where: {
-      email: loginData.email,
+      email: payload.email,
     },
   });
 
   if (!user) {
-    throw new AppError("Wrong email/password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
-  const passwordMatch = await compare(loginData.password, user.password);
+  console.log(typeof user.password, user.password, "data");
+
+  console.log(typeof payload.password, payload.password, "payload");
+
+  const passwordMatch = await compare(payload.password, user.password);
+
+  console.log(passwordMatch);
 
   if (!passwordMatch) {
-    throw new AppError("Wrong email/password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const token = jwt.sign(
@@ -37,6 +43,8 @@ const loginService = async (loginData: TLogin): Promise<string> => {
       subject: String(user.id),
     }
   );
+
+  console.log(token);
 
   return token;
 };

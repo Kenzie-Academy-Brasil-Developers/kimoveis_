@@ -6,13 +6,13 @@ import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces";
 import { userSchemaRes } from "../../schemas/user.schemas";
 
 const createUsersService = async (
-  userData: TUserRequest
+  payload: TUserRequest
 ): Promise<TUserResponse> => {
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  userData.password = await hash(userData.password, 10);
+  // payload.password = await hash(payload.password, 10);
 
-  const user: User = userRepository.create(userData);
+  const user: User = userRepository.create(payload);
   await userRepository.save(user);
 
   const returnUser: TUserResponse = userSchemaRes.parse(user);

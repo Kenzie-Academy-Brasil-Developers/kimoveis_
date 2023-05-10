@@ -13,9 +13,9 @@ const createUsersController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const userData: TUserRequest = req.body;
+  const payload: TUserRequest = req.body;
 
-  const newUser = await createUsersService(userData);
+  const newUser = await createUsersService(payload);
 
   return res.status(201).json(newUser);
 };
@@ -27,6 +27,8 @@ const listUsersController = async (
   const isAdmin = res.locals.dataToken.admin;
 
   const users = await listUsersService(isAdmin);
+
+  console.log(users);
 
   return res.status(200).json(users);
 };

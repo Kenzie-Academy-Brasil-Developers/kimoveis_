@@ -6,8 +6,8 @@ const userSchema = z.object({
   email: z.string().email().max(45),
   password: z.string().max(120),
   admin: z.boolean().default(false),
-  createdAt: z.date(),
-  updatedAt: z.date(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
   deletedAt: z.date().nullish(),
 });
 

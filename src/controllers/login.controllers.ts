@@ -6,9 +6,11 @@ const loginController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const loginData: TLogin = req.body;
+  const payload: TLogin = req.body;
 
-  const token = await loginService(loginData);
+  const token = await loginService(payload);
+
+  // console.log(token);
 
   return res.json({ token });
 };
