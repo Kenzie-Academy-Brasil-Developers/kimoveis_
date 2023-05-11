@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { TRealEstateRequest } from "../interfaces/realEstate.interfaces";
 import createRealServices from "../services/realEstate/createReal.services";
+import listRealEstateService from "../services/realEstate/listRealEstate.service";
 
 const createRealEstateController = async (
   req: Request,
@@ -21,4 +22,13 @@ const createRealEstateController = async (
   return res.status(201).json(newRealEstate);
 };
 
-export { createRealEstateController };
+const listRealEstateController = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const listRealE = await listRealEstateService();
+
+  return res.json(listRealE);
+};
+
+export { createRealEstateController, listRealEstateController };

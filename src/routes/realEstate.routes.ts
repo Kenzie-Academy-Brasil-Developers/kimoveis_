@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { createRealEstateController } from "../controllers/realEstate.controllers";
+import {
+  createRealEstateController,
+  listRealEstateController,
+} from "../controllers/realEstate.controllers";
 import { RealEstate } from "../entities";
 import validateCategory from "../middlewares/validateCategory.services";
 import validateNumber from "../middlewares/validateNumber.middlewares";
@@ -17,5 +20,6 @@ realEstateRoutes.post(
   validateCategory,
   createRealEstateController
 );
+realEstateRoutes.get("", listRealEstateController);
 
 export default realEstateRoutes;
