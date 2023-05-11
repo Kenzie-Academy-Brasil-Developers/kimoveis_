@@ -1,8 +1,6 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { Address, RealEstate } from "../../entities";
-import { TRealEstate } from "../../interfaces/realEstate.interfaces";
-import { realEstateschema } from "../../schemas/realEstate.schemas";
+import { RealEstate } from "../../entities";
 
 const listRealEstateService = async (): Promise<RealEstate[]> => {
   const realRepository: Repository<RealEstate> =
@@ -14,8 +12,6 @@ const listRealEstateService = async (): Promise<RealEstate[]> => {
     },
   });
 
-  console.log(realEstate);
-  
   return realEstate;
 };
 

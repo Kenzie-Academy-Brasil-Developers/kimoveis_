@@ -7,11 +7,11 @@ class Schedule {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
-  @Column("integer")
-  date: Date;
+  @Column({ type: "date" })
+  date: string;
 
-  @Column("time")
-  time: string;
+  @Column({ type: "time" })
+  hour: string;
 
   @ManyToOne(() => User)
   user: User;

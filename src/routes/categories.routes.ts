@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   createCategoriesController,
   listCategoriesController,
+  listRealByCategoriesControllers,
 } from "../controllers/categories.controllers";
 import validateName from "../middlewares/validateName.middlewares";
 import { validateToken } from "../middlewares/validateToken.middlewares";
@@ -18,5 +19,6 @@ categoriesRoutes.post(
   createCategoriesController
 );
 categoriesRoutes.get("", listCategoriesController);
+categoriesRoutes.get("/:id/realEstate", listRealByCategoriesControllers);
 
 export default categoriesRoutes;

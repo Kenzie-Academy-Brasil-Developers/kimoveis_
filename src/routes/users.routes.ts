@@ -22,9 +22,9 @@ userRoutes.post(
 userRoutes.get("", validateToken, listUsersController);
 userRoutes.patch(
   "/:id",
+  validateToken,
   validateData(userSchemaReqUpdate),
   validateId,
-  validateToken,
   updateUsersController
 );
 userRoutes.delete("/:id", validateId, validateToken, deleteUsersController);

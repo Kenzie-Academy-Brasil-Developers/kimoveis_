@@ -10,9 +10,6 @@ const listCategoriesServices = async (): Promise<TCategotyResponse> => {
 
   const categories = await categpryRepository.find();
 
-  //   const returnCategoris: TCategotyResponse[] = categories.map((category) =>
-  //     categorySchemaRes.parse(category)
-  //   );
   return categories;
 };
 

@@ -2,8 +2,8 @@ import { z } from "zod";
 
 const schedulesSchema = z.object({
   id: z.number(),
-  date: z.date(),
-  hour: z.date(),
+  date: z.string(),
+  hour: z.string(),
   realEstateId: z.number(),
   userId: z.number(),
 });
