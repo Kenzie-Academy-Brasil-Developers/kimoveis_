@@ -7,7 +7,7 @@ const deleteUsersService = async (
   id: number,
   isAdmin: boolean
 ): Promise<void> => {
-  if (isAdmin === false) {
+  if (!isAdmin) {
     throw new AppError("Insufficient permission", 403);
   }
 

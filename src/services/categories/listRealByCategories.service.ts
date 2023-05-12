@@ -1,20 +1,39 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Category, RealEstate } from "../../entities";
-import { TCategotyResponse } from "../../interfaces/category.interfaces";
-import { categorySchemaRes } from "../../schemas/category.schemas";
+import { AppError } from "../../error";
 
-const listREalByCategoryServices = async (id: number): Promise<void> => {
+const listREalByCategoryServices = async (id: number): Promise<Category> => {
+  // const realRepository: Repository<RealEstate> =
+  // AppDataSource.getRepository(RealEstate);
+
+  // const returnUsers: TUserResponse[] = users.map((user) =>
+  //   userSchemaRes.parse(user)
+  // );
+
+  // const categories = await realRepository
+  //   .createQueryBuilder("realEstate")
+  //   .leftJoin("realEstate.category", "category")
+  //   .where("category.id = :id", { id: id })
+  //   .getOne();
+
   const categopryRepository: Repository<Category> =
     AppDataSource.getRepository(Category);
-  const realRepository: Repository<RealEstate> =
-    AppDataSource.getRepository(RealEstate);
 
-  const categories = await categopryRepository.find({
-    where: { id: id },
+  const categories = await categopryRepository.findOne({
+    where: {
+      realEstate: { id: id },
+    },
+    relations: {
+      realEstate: true,
+    },
   });
 
-  //   return categories;
+  if (!categories) {
+    throw new AppError("Category not found", 404);
+  }
+
+  return categories!;
 };
 
 export default listREalByCategoryServices;

@@ -1,6 +1,6 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { RealEstate, Schedule } from "../../entities";
+import { RealEstate, Schedule, User } from "../../entities";
 import { AppError } from "../../error";
 import { TSchedulesRequest } from "../../interfaces/schedules.interfaces";
 
@@ -14,9 +14,9 @@ const createSchedulesServices = async (
   const realEstateRepository: Repository<RealEstate> =
     AppDataSource.getRepository(RealEstate);
 
-  const { date, hour, realEstateId } = payload;
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  // console.log(userId);
+  const { date, hour, realEstateId } = payload;
 
   const isSameDateTimeUserExists = await scheduleRepository
     .createQueryBuilder("schedule")
@@ -59,6 +59,12 @@ const createSchedulesServices = async (
     throw new AppError("RealEstate not found", 404);
   }
 
+  const user = await userRepository.findOne({
+    where: {
+      id: userId,
+    },
+  });
+
   const dateObj = new Date(date);
   if (dateObj.getDay() === 0 || dateObj.getDay() === 6) {
     throw new AppError("Invalid date, work days are monday to friday", 400);
@@ -71,6 +77,7 @@ const createSchedulesServices = async (
   newschedule.date = date;
   newschedule.hour = hour;
   newschedule.realEstate = realEstate;
+  newschedule.user = user!;
 
   const schedule: Schedule = scheduleRepository.create(newschedule);
   await scheduleRepository.save(schedule);

@@ -38,7 +38,8 @@ class RealEstate {
   address: Address;
 
   @OneToMany(() => Schedule, (schedule) => schedule.user)
-  schedule: Schedule[];
+  @JoinColumn()
+  schedules: Schedule[];
 
   @ManyToOne(() => Category, (category) => category.realEstate)
   category: Category;

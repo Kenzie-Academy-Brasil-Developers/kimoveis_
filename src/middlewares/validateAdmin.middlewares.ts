@@ -7,8 +7,8 @@ export const validateIsAdmin = async (
   next: NextFunction
 ): Promise<Response | void> => {
   const id = parseInt(req.params.id);
-  const isAdmin = res.locals.adminToken.admin;
-  const tokenId = parseInt(res.locals.adminToken.id);
+  const isAdmin = res.locals.dataToken.admin;
+  const tokenId = parseInt(res.locals.dataToken.id);
 
   if (isAdmin === false && id === tokenId) {
     return next();
