@@ -1,11 +1,11 @@
-import { Repository, SelectQueryBuilder } from "typeorm";
+import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { RealEstate, Schedule } from "../../entities";
+import { RealEstate } from "../../entities";
 import { AppError } from "../../error";
 const listSchedulesService = async (
   isAdmin: boolean,
   idRealEstate: number
-): Promise<RealEstate[]> => {
+): Promise<RealEstate> => {
   const realRepository: Repository<RealEstate> =
     AppDataSource.getRepository(RealEstate);
   if (isAdmin === false) {
@@ -14,6 +14,7 @@ const listSchedulesService = async (
   const real = await realRepository.findOneBy({
     id: idRealEstate,
   });
+
   if (!real) {
     throw new AppError("RealEstate not found", 404);
   }
@@ -24,8 +25,7 @@ const listSchedulesService = async (
     .leftJoinAndSelect("real_estate.schedules", "schedules")
     .leftJoinAndSelect("schedules.user", "user")
     .where("real_estate.id = :id", { id: idRealEstate })
-    .getMany();
-
+    .getOne();
 
   return result!;
 };

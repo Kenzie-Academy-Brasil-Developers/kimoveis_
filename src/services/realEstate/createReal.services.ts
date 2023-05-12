@@ -1,11 +1,8 @@
-import { DeepPartial, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { Address, RealEstate } from "../../entities";
 import { AppError } from "../../error";
-import {
-  TRealEstate,
-  TRealEstateRequest,
-} from "../../interfaces/realEstate.interfaces";
+import { TRealEstateRequest } from "../../interfaces/realEstate.interfaces";
 
 const createRealServices = async (
   payload: TRealEstateRequest,

@@ -1,4 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { RealEstate } from "./realEstate.entities";
 
 @Entity("categories")
@@ -10,7 +16,8 @@ class Category {
   name: string;
 
   @OneToMany(() => RealEstate, (realEstate) => realEstate.category)
-  realEstate: RealEstate;
+  @JoinColumn()
+  realEstate: RealEstate[];
 }
 
 export { Category };

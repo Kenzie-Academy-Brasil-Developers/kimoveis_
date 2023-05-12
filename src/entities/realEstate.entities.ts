@@ -37,11 +37,12 @@ class RealEstate {
   @JoinColumn()
   address: Address;
 
-  @OneToMany(() => Schedule, (schedule) => schedule.user)
+  @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
   @JoinColumn()
   schedules: Schedule[];
 
   @ManyToOne(() => Category, (category) => category.realEstate)
+  @JoinColumn()
   category: Category;
 }
 

@@ -3,7 +3,6 @@ import {
   createRealEstateController,
   listRealEstateController,
 } from "../controllers/realEstate.controllers";
-import { RealEstate } from "../entities";
 import validateCategory from "../middlewares/validateCategory.services";
 import validateNumber from "../middlewares/validateNumber.middlewares";
 import { validateToken } from "../middlewares/validateToken.middlewares";

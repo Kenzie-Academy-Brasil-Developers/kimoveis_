@@ -1,4 +1,4 @@
-import { hash, hashSync } from "bcryptjs";
+import { hashSync } from "bcryptjs";
 import {
   Entity,
   Column,

@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { RealEstate } from "../entities";
 import { TCategotyRequest } from "../interfaces/category.interfaces";
 import createCategoriesServices from "../services/categories/createCategories.services";
 import listCategoriesServices from "../services/categories/listCategories.services";

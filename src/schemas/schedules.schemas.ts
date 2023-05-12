@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { realEstateschema } from "./realEstate.schemas";
 
 const schedulesSchema = z.object({
   id: z.number(),

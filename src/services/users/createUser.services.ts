@@ -1,7 +1,6 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities";
-import { hash } from "bcryptjs";
 import { TUserRequest, TUserResponse } from "../../interfaces/user.interfaces";
 import { userSchemaRes } from "../../schemas/user.schemas";
 
